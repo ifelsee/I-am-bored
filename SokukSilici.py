@@ -1,8 +1,7 @@
 import os
 def rmn(file_name):
     with open(file_name) as file:
-        lines = file.readlines()
-        lines = [line.rstrip() for line in lines]
+        lines = [line.rstrip() for line in file.readlines()]
         x = ""
         c = 0
         temp = []
@@ -10,7 +9,6 @@ def rmn(file_name):
             c += 1
             if c == 1 :
                 x = i
-                pass
             else :
                 if c == 3 :
                     i = i.replace (x,"",1)
