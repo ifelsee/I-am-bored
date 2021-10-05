@@ -1,7 +1,9 @@
 import os
+import sys
 def rmn(file_name):
     with open(file_name) as file:
-        lines = [line.rstrip() for line in file.readlines()]
+        lines = file.readlines()
+        lines = [line.rstrip() for line in lines]
         x = ""
         c = 0
         temp = []
@@ -9,6 +11,7 @@ def rmn(file_name):
             c += 1
             if c == 1 :
                 x = i
+                pass
             else :
                 if c == 3 :
                     i = i.replace (x,"",1)
@@ -32,5 +35,13 @@ def rmn(file_name):
                 f.writelines("\n")
                 f.writelines(i)
 
-[rmn(i) for i in os.listdir() if i[-3:] == "srt"]
+#[rmn(i) for i in os.listdir() if i[-3:] == "srt"]
 
+for i in os.listdir():
+	if i != sys.argv[0]:
+		os.chdir(i)
+		for j in os.listdir():
+			if j[-3:] =="srt":
+				rmn(j)
+			print(j)
+		os.chdir("..")
